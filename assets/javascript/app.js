@@ -60,6 +60,8 @@ dataRef.ref().on("child_added", function(childSnapshot){
     ].join(""));
 })
 
+//This outputs first because script tag is first
+console.log(moment());
 
 
 
