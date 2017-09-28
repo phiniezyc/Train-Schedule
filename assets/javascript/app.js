@@ -14,7 +14,8 @@ var dataRef = firebase.database();
 var trainName = "";
 var trainDestination = "";
 var firstTrainTime = "";
-var trainFrequency = 0;
+//converted this to a string because 0 wasn't working...
+var trainFrequency = "";
 
 $("#addTrainSubmitButton").on("click", function (event) {
     event.preventDefault();
@@ -40,18 +41,20 @@ dataRef.ref().on("child_added", function(childSnapshot){
     console.log(childSnapshot.val().trainDestination);
     console.log(childSnapshot.val().firstTrainTime);
     console.log(childSnapshot.val().trainFrequency);
+    //this is how you'd convert this to a string. May not need. 
+    console.log(Number(childSnapshot.val().trainFrequency));
 
-    var currentTrainName = childSnapshot.val().trainName;
-    var currentTrainDestination = childSnapshot.val().trainDestination; 
-    var currentFirstTrainTime = childSnapshot.val().firstTrainTime;
-    var currentTrainFrequency = childSnapshot.val().trainFrequency;
+    var displayedTrainName = childSnapshot.val().trainName;
+    var displayedTrainDestination = childSnapshot.val().trainDestination; 
+    var displayedFirstTrainTime = childSnapshot.val().firstTrainTime;
+    var displayedTrainFrequency = childSnapshot.val().trainFrequency;
 
     //Should this be ordered by next arrival?
     $("table").find("tbody").append([
         "<tr>",
-            "<td>" + currentTrainName,
-            "<td>" + currentTrainDestination,
-            "<td>" + currentTrainFrequency, 
+            "<td>" + displayedTrainName,
+            "<td>" + displayedTrainDestination,
+            "<td>" + displayedTrainFrequency, 
             "<td>",
             "<td>",
     ].join(""));
