@@ -1,5 +1,5 @@
 .jumbotron {
-    background-color: lightblue;
+    background-color: #ADE6CE;
     border: 2px solid black;
 }
 
@@ -8,7 +8,7 @@
 }
 
 #addTrainHeading {
-    background-color: lightcoral;
+    background-color: rgb(232, 240, 128);
     text-align: center;
 }
 
